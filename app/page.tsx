@@ -41,7 +41,7 @@ export default function Home() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-900 underline underline-offset-2"
+                className="text-neutral-900 transition-colors duration-150 hover:text-neutral-500"
               >
                 {link.label}
               </a>
@@ -55,7 +55,7 @@ export default function Home() {
             href={siteConfig.author.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neutral-900 underline underline-offset-2"
+            className="text-neutral-900 transition-colors duration-150 hover:text-neutral-500"
           >
             {siteConfig.author.name}
           </a>

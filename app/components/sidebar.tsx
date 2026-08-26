@@ -37,20 +37,6 @@ export function Sidebar() {
           );
         })}
       </nav>
-
-      <div className="mt-6 border-t border-neutral-200 pt-4 text-xs text-neutral-400">
-        <p className="mt-1">
-          made by{" "}
-          <a
-            href={siteConfig.author.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-neutral-500 underline underline-offset-2 transition-colors hover:text-neutral-900"
-          >
-            {siteConfig.author.name}
-          </a>
-        </p>
-      </div>
     </aside>
   );
 }
