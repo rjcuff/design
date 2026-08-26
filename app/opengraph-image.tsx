@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/app/site-config";
 
-export const alt = `${siteConfig.title} — ${siteConfig.description}`;
+export const alt = siteConfig.description;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -12,8 +12,9 @@ export default function OpengraphImage() {
         width: "100%",
         height: "100%",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 28,
         backgroundColor: "#ffffff",
         padding: "96px",
       }}
@@ -21,8 +22,9 @@ export default function OpengraphImage() {
       <div
         style={{
           display: "flex",
-          width: 72,
-          height: 72,
+          flexShrink: 0,
+          width: 44,
+          height: 44,
           borderRadius: "50%",
           backgroundColor: "#f97316",
         }}
@@ -30,20 +32,9 @@ export default function OpengraphImage() {
       <div
         style={{
           display: "flex",
-          marginTop: 48,
-          fontSize: 92,
-          letterSpacing: "-0.03em",
+          fontSize: 52,
+          letterSpacing: "-0.02em",
           color: "#171717",
-        }}
-      >
-        {siteConfig.title}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          marginTop: 20,
-          fontSize: 36,
-          color: "#737373",
         }}
       >
         {siteConfig.description}
