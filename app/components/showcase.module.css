@@ -1,0 +1,41 @@
+/* Showcase list: one card per row, stacked. */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4rem;
+}
+
+/* Square card frame that holds the showcase component. */
+.frame {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+/* Fill the frame regardless of how the dropped-in component sizes itself. */
+.frameInner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes replaySpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.replaySpin {
+  animation: replaySpin 600ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .replaySpin {
+    animation: none;
+  }
+}
