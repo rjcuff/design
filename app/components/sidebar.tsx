@@ -9,7 +9,7 @@ export function Sidebar() {
   const activeId = useActiveSection(sectionIds);
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-60 flex-col border-r border-neutral-200 bg-white px-6 py-8 md:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-60 flex-col bg-white px-6 py-8 md:flex">
       <div className="flex flex-row items-center gap-2">
         <div className="h-2 w-2 rounded-full bg-orange-500" />
         <span className="text-sm font-medium text-neutral-900">

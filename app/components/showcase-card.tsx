@@ -7,7 +7,12 @@ import { ReplayButton } from "./replay-button";
 import { ReplayProvider, type ReplayPlay } from "./showcase-replay";
 import styles from "./showcase.module.css";
 
-export function ShowcaseCard({ title, description, component }: ShowcaseItem) {
+export function ShowcaseCard({
+  title,
+  description,
+  component,
+  replay,
+}: ShowcaseItem) {
   const Component = component;
   const playRef = useRef<ReplayPlay | null>(null);
 
@@ -41,9 +46,11 @@ export function ShowcaseCard({ title, description, component }: ShowcaseItem) {
       <figcaption className="mt-3 flex items-start justify-between gap-4">
         <div>
           <p className="text-sm font-medium text-neutral-900">{title}</p>
-          <p className="mt-1 text-sm text-neutral-500">{description}</p>
+          <p className="mt-2 text-sm leading-6 text-neutral-500">
+            {description}
+          </p>
         </div>
-        {Component ? <ReplayButton onReplay={handleReplay} /> : null}
+        {Component && replay ? <ReplayButton onReplay={handleReplay} /> : null}
       </figcaption>
     </figure>
   );

@@ -1,7 +1,8 @@
-/* Content column: a single readable column, centred in the space beside the
-   sidebar at every width. */
+/* Content column: one readable column, centred in the space beside the
+   sidebar. Its width sets the width of the cards too, so text and cards
+   share an edge. */
 .column {
   width: 100%;
-  max-width: 40rem;
+  max-width: 34rem;
   margin-inline: auto;
 }
