@@ -20,11 +20,11 @@ export default function Home() {
           timing sat properly. i write down what i got wrong along the way, so
           none of it arrives finished. learn along with me.
         </p>
-
-        <div className="mt-12">
-          <ShowcaseGrid />
-        </div>
       </section>
+
+      <div className="mt-12">
+        <ShowcaseGrid />
+      </div>
 
       <section id="contact" className="mt-32 scroll-mt-16">
         <h2 className="text-2xl font-medium tracking-tight text-neutral-900">

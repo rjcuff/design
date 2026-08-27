@@ -1,0 +1,43 @@
+.stack {
+  display: grid;
+  width: 92%;
+  max-width: 26rem;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.layer {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orange {
+  background-color: #f97316;
+}
+
+.panel {
+  background-color: #f5f5f4;
+  clip-path: inset(0px 0px var(--fill, 25%) 0px);
+  transition: clip-path 100ms ease-out;
+  margin: -1px;
+}
+
+.stack[data-fill="resting"] .panel {
+  transition-duration: 400ms;
+}
+
+.text {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.dark {
+  color: #171717;
+}
+
+.light {
+  color: #ffffff;
+}

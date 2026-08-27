@@ -28,7 +28,7 @@ export function Sidebar() {
               aria-current={isActive ? "true" : undefined}
               className={
                 isActive
-                  ? "text-sm font-medium text-neutral-900 no-underline transition-colors"
+                  ? "text-sm text-neutral-900 no-underline transition-colors"
                   : "text-sm text-neutral-500 no-underline transition-colors hover:text-neutral-900"
               }
             >

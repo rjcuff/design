@@ -1,5 +1,7 @@
 import type { ComponentType } from "react";
 
+import ClipPath from "./demos/clip-path";
+import ListView from "./demos/list-view";
 import OrangeButton from "./demos/orange-button";
 
 export type ShowcaseItem = {
@@ -27,7 +29,21 @@ export const showcaseItems: ShowcaseItem[] = [
     id: "orange-button",
     title: "orange button",
     description:
-      "buttons are simple, and the pull is to pile on hover colours, lifts and shadows. a 150ms scale on press does more than all of it put together. the one addition worth keeping is will-change: transform on the element itself, which hands it to the gpu up front. the same line on :hover made the jerk worse, because building that layer mid-hover is a repaint of its own. less is more.",
+      "buttons are simple. a 150ms scale on press beats piling on hover colors, lifts and shadows. will-change: transform belongs on the element itself, not on :hover, where building the layer is its own repaint.",
     component: OrangeButton,
+  },
+  {
+    id: "list-view",
+    title: "list view",
+    description:
+      "if someone sees an interaction a hundred times a day, the right duration is none. this row has no transition and no easing, because a fade reads as lag. will-change buys nothing here either, since background-color is painted, not composited.",
+    component: ListView,
+  },
+  {
+    id: "clip-path",
+    title: "clip path",
+    description:
+      "clip-path hides part of an element without touching layout, so it composites like transform does. two layers stacked, the top one clipped with inset, and the split falls straight through the letters. every reveal, slider and wipe is this same trick with the inset animated.",
+    component: ClipPath,
   },
 ];

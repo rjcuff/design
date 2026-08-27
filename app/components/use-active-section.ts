@@ -44,7 +44,33 @@ export function useActiveSection(ids: readonly string[]): string | undefined {
       observer.observe(section);
     }
 
-    return () => observer.disconnect();
+    // The band above sits near the top of the viewport, and the page runs out
+    // of scroll before the last section can reach it. Without this, the final
+    // nav item never lights up.
+    let frame: number | null = null;
+
+    const onScroll = () => {
+      if (frame !== null) return;
+
+      frame = requestAnimationFrame(() => {
+        frame = null;
+
+        const scrolled = window.innerHeight + window.scrollY;
+        const atBottom = scrolled >= document.documentElement.scrollHeight - 2;
+
+        if (atBottom) {
+          setActiveId(ids[ids.length - 1]);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
   }, [ids]);
 
   return activeId;

@@ -8,6 +8,7 @@ import { ReplayProvider, type ReplayPlay } from "./showcase-replay";
 import styles from "./showcase.module.css";
 
 export function ShowcaseCard({
+  id,
   title,
   description,
   component,
@@ -31,7 +32,7 @@ export function ShowcaseCard({
   );
 
   return (
-    <figure className="m-0">
+    <figure id={id} className="m-0 scroll-mt-16">
       <div
         className={`${styles.frame} border border-stone-100 bg-stone-50 shadow`}
       >
