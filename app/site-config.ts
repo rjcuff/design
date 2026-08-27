@@ -13,7 +13,7 @@ export const siteConfig = {
 export const socialLinks = [
   { label: "github", href: "https://github.com/rjcuff" },
   { label: "x", href: "https://x.com/ryancuff_" },
-  { label: "instagram", href: "https://instagram.com/design.ryancuff.com" },
+  { label: "instagram", href: "https://instagram.com/design.ryancuff" },
 ] as const;
 
 /** Single page. Each nav item scrolls to a section id on this page. */
