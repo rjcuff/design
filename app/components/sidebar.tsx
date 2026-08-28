@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { navItems, siteConfig } from "@/app/site-config";
 import { useActiveSection } from "./use-active-section";
 
@@ -36,6 +38,15 @@ export function Sidebar() {
             </a>
           );
         })}
+
+        {/* A real page rather than a section anchor, so it sits with the nav
+            but stays out of navItems, which drives the scroll spy. */}
+        <Link
+          href="/terms"
+          className="text-sm text-neutral-500 no-underline transition-colors hover:text-neutral-900"
+        >
+          terms
+        </Link>
       </nav>
 
       {/* Sits under the nav rather than in its own page section, so it is

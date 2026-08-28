@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 import { siteConfig, socialLinks } from "@/app/site-config";
 
 /**
- * Contact for narrow screens.
+ * Contact and terms for narrow screens.
  *
- * The sidebar carries these links and is hidden below `md`, so without this
- * there is no way to reach them on a phone at all.
+ * The sidebar carries these and is hidden below `md`, so without this there
+ * is no way to reach either on a phone.
  */
 export function MobileFooter() {
   return (
@@ -21,6 +23,10 @@ export function MobileFooter() {
             {link.label}
           </a>
         ))}
+
+        <Link href="/terms" className="text-sm text-neutral-500 no-underline">
+          terms
+        </Link>
       </nav>
 
       <p className="mt-6 text-sm text-neutral-400">
