@@ -13,7 +13,7 @@ import {
  */
 
 export const runtime = "nodejs";
-// Never cached. A cached response would outlive the token that authorised it.
+// Never cached. A cached response would outlive the token that authorized it.
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {

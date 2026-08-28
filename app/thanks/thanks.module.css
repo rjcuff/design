@@ -1,0 +1,95 @@
+/* The download button.
+
+   Press only, no hover, matching the buy button and the showcase. The one
+   thing that does move is the fill, and it moves because it is reporting
+   something: the file is on its way. */
+.button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #f97316;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 150ms ease-out;
+  will-change: transform;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* Darker orange sweeping left to right while the file is being handed over.
+   A scale rather than a width, so filling the button costs no layout, and it
+   is clipped by the button rather than rounded itself, or the scale would
+   squash its own corners. */
+.fill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color: #c2410c;
+}
+
+.filling {
+  transform: scaleX(1);
+  transition: transform 900ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.done {
+  transform: scaleX(1);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Rises in on load, one rung after another, so the page arrives as a
+   sequence rather than a flash. */
+.rise {
+  animation: rise 420ms cubic-bezier(0.165, 0.84, 0.44, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .filling {
+    transition: none;
+  }
+
+  .button:active {
+    transform: none;
+  }
+
+  .rise {
+    animation: none;
+  }
+}

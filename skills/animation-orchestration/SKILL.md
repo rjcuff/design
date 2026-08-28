@@ -294,7 +294,7 @@ for the underlying path syntax and coordinate rules, see `svg-fundamentals`.
 
 - [ ] every timing constant for the interaction in one object
 - [ ] phase boundaries derived from the total, not independently hardcoded
-- [ ] every pending phase cancelled in cleanup
+- [ ] every pending phase canceled in cleanup
 - [ ] first placement does not animate
 - [ ] resize remeasures, and carries velocity if motion is in flight
 - [ ] one observer per group, not one per child

@@ -129,7 +129,7 @@ your commitment to privacy.
   a card with no footnote and a card with one should be the same height.
 - **the free tier gets a real description**, not "for individuals". "For one
   person building one thing" says who it is for.
-- **the included list on a paid template is licence terms, not features.**
+- **the included list on a paid template is license terms, not features.**
   commercial use, perpetual, updates, resale. at that point in the page the
   buyer is deciding whether they are allowed to do what they want to do.
 
@@ -153,7 +153,7 @@ your commitment to privacy.
 ## placeholder honesty
 
 everything invented in a template must be obviously invented or obviously
-labelled.
+labeled.
 
 - **company names in a logo row are placeholders.** say so in a config
   comment, and say that the row reads as a claim of endorsement once it is
@@ -177,5 +177,5 @@ labelled.
 - [ ] faq answers billing, metering, setup time and leaving
 - [ ] pricing says what a seat is, on the card
 - [ ] no em dashes, no exclamation marks, no banned words
-- [ ] placeholders labelled, `href: "#"` countable
+- [ ] placeholders labeled, `href: "#"` countable
 - [ ] config read top to bottom before shipping

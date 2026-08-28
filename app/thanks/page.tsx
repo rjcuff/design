@@ -5,6 +5,8 @@ import styles from "@/app/components/layout.module.css";
 import { createDownloadToken, LINK_TTL_SECONDS } from "@/app/lib/download";
 import { requireEnv } from "@/app/lib/env";
 import { pack } from "@/app/skills";
+import { DownloadButton } from "./download-button";
+import thanks from "./thanks.module.css";
 
 /**
  * Post-payment landing page.
@@ -56,6 +58,15 @@ async function resolve(sessionId: string | undefined): Promise<Outcome> {
   }
 }
 
+function Detail({ term, value }: { term: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 py-2">
+      <dt className="text-sm text-neutral-500">{term}</dt>
+      <dd className="text-sm text-neutral-900 tabular-nums">{value}</dd>
+    </div>
+  );
+}
+
 export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
   const params = await searchParams;
   const sessionId =
@@ -63,33 +74,12 @@ export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
 
   const outcome = await resolve(sessionId);
 
-  return (
-    <div className={styles.column}>
-      <h1 className="text-2xl font-medium tracking-tight text-neutral-900">
-        {outcome.state === "ready" ? "thanks" : "something went wrong"}
-      </h1>
-
-      {outcome.state === "ready" ? (
-        <>
-          <p className="mt-3 text-sm leading-6 text-neutral-500">
-            payment received. {pack.packSize} skills, yours to keep and edit.
-          </p>
-
-          <div className="mt-8">
-            <a
-              href={outcome.href}
-              className="inline-flex items-center rounded-full bg-orange-500 px-6 py-3 text-sm font-medium text-white no-underline transition-colors hover:bg-orange-600"
-            >
-              download the pack
-            </a>
-            <p className="mt-3 text-sm leading-6 text-neutral-500">
-              this link works for 24 hours. save the files somewhere you will
-              find them again. updates go to the email you paid with, free, for
-              as long as the pack exists.
-            </p>
-          </div>
-        </>
-      ) : (
+  if (outcome.state !== "ready") {
+    return (
+      <div className={styles.column}>
+        <h1 className="text-2xl font-medium tracking-tight text-neutral-900">
+          something went wrong
+        </h1>
         <p className="mt-3 text-sm leading-6 text-neutral-500">
           {outcome.state === "stale"
             ? "this page has expired. it stays open for 24 hours after a purchase."
@@ -105,7 +95,57 @@ export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
           </a>{" "}
           and i will send your download by hand.
         </p>
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.column}>
+      <h1
+        className={`${thanks.rise} text-2xl font-medium tracking-tight text-neutral-900`}
+      >
+        thanks
+      </h1>
+
+      <p
+        className={`${thanks.rise} mt-3 text-sm leading-6 text-neutral-500`}
+        style={{ animationDelay: "60ms" }}
+      >
+        payment received. the pack is yours to keep and edit, on anything you
+        build.
+      </p>
+
+      <div
+        className={`${thanks.rise} mt-10 rounded-lg border border-stone-100 bg-stone-50 p-6`}
+        style={{ animationDelay: "120ms" }}
+      >
+        <p className="text-sm font-medium text-neutral-900">{pack.name}</p>
+
+        <dl className="mt-4 divide-y divide-stone-200/70 border-y border-stone-200/70">
+          <Detail term="skills" value={String(pack.packSize)} />
+          <Detail term="version" value="1.0.0" />
+          <Detail term="format" value="markdown" />
+        </dl>
+
+        <div className="mt-6">
+          <DownloadButton href={outcome.href} />
+        </div>
+      </div>
+
+      <p
+        className={`${thanks.rise} mt-6 text-sm leading-6 text-neutral-500`}
+        style={{ animationDelay: "180ms" }}
+      >
+        updates are free for as long as the pack exists, and go to the email you
+        paid with. anything wrong, email{" "}
+        <a
+          href="mailto:ryan.cuff@icloud.com"
+          className="text-neutral-900 transition-colors hover:text-neutral-500"
+        >
+          ryan.cuff@icloud.com
+        </a>{" "}
+        and i will sort it.
+      </p>
     </div>
   );
 }

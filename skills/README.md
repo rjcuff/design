@@ -1,6 +1,6 @@
 # ease-out
 
-**v1.0.0** | [changelog](CHANGELOG.md) | [licence](LICENSE.md)
+**v1.0.0** | [changelog](CHANGELOG.md) | [license](LICENSE.md)
 
 seventeen skills covering interface motion, visual detail, component api
 design, and shipping a landing page that looks paid for.

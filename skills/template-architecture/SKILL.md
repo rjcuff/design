@@ -242,7 +242,7 @@ product.
      one paragraph, two lines, muted                what the price covers
 
 +------------------------------------------+
-| Individual licence, lifetime  [POPULAR]   |   tinted head only
+| Individual license, lifetime  [POPULAR]   |   tinted head only
 | $79  $129                                 |   56 to 72px, struck comparison
 | one time payment                          |
 | two lines on what it is                   |
@@ -251,7 +251,7 @@ product.
 | + Lead phrase. Then the explanation.      |   filled circle ticks
 | + ...six of these                         |
 | [   Get unlimited access              ]   |   full width, glow beneath
-| team licence line, small, muted           |
+| team license line, small, muted           |
 +------------------------------------------+
 ```
 
@@ -259,7 +259,7 @@ details that carry it:
 
 - **the tint lives only on the head of the card.** a gradient across the whole
   card looks like a template.
-- **the included list is licence terms, not features.** commercial use,
+- **the included list is license terms, not features.** commercial use,
   perpetual, lifetime updates, resale prohibited. at this point in the page the
   buyer is deciding whether they are allowed to do the thing they want to do.
 - each item is a bolded lead phrase then a muted sentence. scannable and

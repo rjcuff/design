@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { MobileFooter } from "@/app/components/mobile-footer";
 import { Sidebar } from "@/app/components/sidebar";
 import { siteConfig } from "@/app/site-config";
 import "./globals.css";
@@ -52,9 +53,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full bg-white font-sans text-neutral-900">
         <Sidebar />
-        <main className="min-h-screen px-6 py-12 md:ml-60 md:px-10 md:py-16 lg:px-16">
+        <main className="px-6 py-12 md:ml-60 md:min-h-screen md:px-10 md:py-16 lg:px-16">
           {children}
         </main>
+        <MobileFooter />
       </body>
     </html>
   );

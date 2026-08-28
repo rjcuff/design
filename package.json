@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "build:pack": "node scripts/build-pack.mjs",
+    "mint-link": "node scripts/mint-link.mjs"
   },
   "dependencies": {
     "next": "16.3.3",

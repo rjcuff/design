@@ -135,7 +135,7 @@ dash calculations. set it to 1 and the path is normalized: the offset is now
 the fraction still to draw, and no measurement is ever needed.
 
 ```ts
-// pathLength="1" normalises the path, so the offset is the fraction of it
+// pathLength="1" normalizes the path, so the offset is the fraction of it
 // still to be drawn and the geometry never has to be measured.
 const draw = (value: number) => {
   node.style.strokeDashoffset = `${1 - clamp(value)}`

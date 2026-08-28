@@ -12,7 +12,7 @@ import { requireEnv } from "./env";
  * expiry invalidates it.
  *
  * Deliberately stateless. There is no database, so a link cannot be revoked or
- * counted, only outlived. The short window is the whole defence: a link posted
+ * counted, only outlived. The short window is the whole defense: a link posted
  * somewhere public stops working within a day.
  */
 
