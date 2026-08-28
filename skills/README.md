@@ -10,8 +10,62 @@ address you bought with, and the [changelog](CHANGELOG.md) says what moved in
 each one, so you can re-read only what changed.
 
 each is a directory with a `SKILL.md` inside it. the frontmatter carries a
-`name`, a `description` and the trigger phrases an agent matches on, so they
-work as claude code skills, as cursor rules, or as plain reference documents.
+`name`, a `description` and the trigger phrases an agent matches on, which is
+the shape claude code expects.
+
+## install
+
+### claude code
+
+drop the skill directories straight in. the layout in this zip already
+matches.
+
+**everywhere, for every project:**
+
+```
+~/.claude/skills/
+```
+
+**one project only:**
+
+```
+your-project/.claude/skills/
+```
+
+either way you end up with this:
+
+```
+~/.claude/skills/
+  motion-system/SKILL.md
+  animation-performance/SKILL.md
+  clip-path/SKILL.md
+  ...
+```
+
+that is the whole install. claude code reads the `description` line and pulls
+a skill in when the work matches it, so there is nothing to invoke by hand.
+you can also ask for one by name.
+
+take the ones you want. seventeen skills all loaded at once is a lot of
+context, and the tracks below are independent.
+
+### cursor
+
+the content works, the file format does not. cursor reads `.mdc` files from
+`.cursor/rules/` with its own frontmatter, so copy the body of a `SKILL.md`
+into a rule and write cursor's own header on top:
+
+```
+---
+description: <the description line from the skill>
+alwaysApply: false
+---
+```
+
+### anything else
+
+they are plain markdown. point whatever you use at the directory, or read
+them yourself. the writing is meant to survive being read by a person.
 
 ## the tracks
 
