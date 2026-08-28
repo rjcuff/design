@@ -4,6 +4,7 @@
   max-width: 26rem;
   aspect-ratio: 3 / 2;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .layer {

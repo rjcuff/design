@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Keep the template committed; real env files stay ignored by the rule above.
+!.env.example
+
+# Built product artifacts
+/dist

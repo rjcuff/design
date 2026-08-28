@@ -37,6 +37,23 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Sits under the nav rather than in its own page section, so it is
+          reachable from anywhere on the page instead of only from the bottom
+          of it. */}
+      <div className="mt-6 border-t border-stone-100 pt-6">
+        <p className="text-sm text-neutral-400">
+          made by{" "}
+          <a
+            href={siteConfig.author.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-500 transition-colors hover:text-neutral-900"
+          >
+            {siteConfig.author.name}
+          </a>
+        </p>
+      </div>
     </aside>
   );
 }

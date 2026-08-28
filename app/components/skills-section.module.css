@@ -1,0 +1,14 @@
+/* The marked phrase in a skill description. The default browser mark is a
+   flat yellow that fights everything else on the page, so it is redrawn: a
+   wash of the accent, at an alpha low enough that the text on top keeps its
+   contrast. */
+.description mark {
+  background-color: color-mix(in oklch, #f97316 14%, transparent);
+  color: inherit;
+  /* Sits closer to a highlighter than a label: a little bleed past the glyphs
+     on each side, and no radius, so it reads as drawn over the text rather
+     than as a chip behind it. */
+  padding: 0.1em 0.15em;
+  margin-inline: -0.15em;
+  border-radius: 0.125rem;
+}

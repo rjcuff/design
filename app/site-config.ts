@@ -19,5 +19,5 @@ export const socialLinks = [
 /** Single page. Each nav item scrolls to a section id on this page. */
 export const navItems = [
   { id: "introduction", label: "introduction" },
-  { id: "contact", label: "contact" },
+  { id: "skills", label: "skills" },
 ] as const;
