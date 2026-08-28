@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { navItems, siteConfig } from "@/app/site-config";
 import { useActiveSection } from "./use-active-section";
@@ -9,33 +10,47 @@ const sectionIds = navItems.map((item) => item.id);
 
 export function Sidebar() {
   const activeId = useActiveSection(sectionIds);
+  const pathname = usePathname();
+  const onHome = pathname === "/";
 
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-60 flex-col bg-white px-6 py-8 md:flex">
-      <div className="flex flex-row items-center gap-2">
+      {/* The wordmark is the way home from every other page. */}
+      <Link
+        href="/"
+        className="flex flex-row items-center gap-2 no-underline"
+        aria-label={`${siteConfig.title}, home`}
+      >
         <div className="h-2 w-2 rounded-full bg-orange-500" />
         <span className="text-sm font-medium text-neutral-900">
           {siteConfig.title}
         </span>
-      </div>
+      </Link>
 
       <nav className="mt-8 flex flex-col gap-1">
         {navItems.map((item) => {
-          const isActive = activeId === item.id;
+          const isActive = onHome && activeId === item.id;
 
-          return (
+          const className = isActive
+            ? "text-sm text-neutral-900 no-underline transition-colors"
+            : "text-sm text-neutral-500 no-underline transition-colors hover:text-neutral-900";
+
+          // On the home page these are in-page anchors, so a plain href keeps
+          // the browser's smooth scrolling. Anywhere else the section is on
+          // another route and the link has to navigate there first.
+          return onHome ? (
             <a
               key={item.id}
               href={`#${item.id}`}
               aria-current={isActive ? "true" : undefined}
-              className={
-                isActive
-                  ? "text-sm text-neutral-900 no-underline transition-colors"
-                  : "text-sm text-neutral-500 no-underline transition-colors hover:text-neutral-900"
-              }
+              className={className}
             >
               {item.label}
             </a>
+          ) : (
+            <Link key={item.id} href={`/#${item.id}`} className={className}>
+              {item.label}
+            </Link>
           );
         })}
 
@@ -43,7 +58,12 @@ export function Sidebar() {
             but stays out of navItems, which drives the scroll spy. */}
         <Link
           href="/terms"
-          className="text-sm text-neutral-500 no-underline transition-colors hover:text-neutral-900"
+          aria-current={pathname === "/terms" ? "page" : undefined}
+          className={
+            pathname === "/terms"
+              ? "text-sm text-neutral-900 no-underline transition-colors"
+              : "text-sm text-neutral-500 no-underline transition-colors hover:text-neutral-900"
+          }
         >
           terms
         </Link>
