@@ -1,23 +1,22 @@
 export const siteConfig = {
-  title: "design",
+  title: "Design",
   /** Override with NEXT_PUBLIC_SITE_URL on preview deploys. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://design.ryancuff.com",
-  description: "animations by ryan, a design engineer.",
+  description: "Design engineering concepts by Ryan, a design engineer.",
   author: {
-    name: "ryan",
+    name: "Ryan",
     href: "https://github.com/rjcuff",
   },
+  repo: {
+    label: "rjcuff/design",
+    href: "https://github.com/rjcuff/design",
+  },
+  /** Installs the skills pack through the skills cli. */
+  installCommand: "npx skills add rjcuff/design",
 } as const;
 
 /** Places to find me. Rendered in the contact section. */
 export const socialLinks = [
-  { label: "github", href: "https://github.com/rjcuff" },
-  { label: "x", href: "https://x.com/ryancuff_" },
-  { label: "instagram", href: "https://instagram.com/design.ryancuff" },
-] as const;
-
-/** Single page. Each nav item scrolls to a section id on this page. */
-export const navItems = [
-  { id: "introduction", label: "introduction" },
-  { id: "skills", label: "skills" },
+  { icon: "github", label: "GitHub", href: "https://github.com/rjcuff" },
+  { icon: "x", label: "X", href: "https://x.com/ryancuff_" },
 ] as const;

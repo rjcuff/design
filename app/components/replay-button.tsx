@@ -22,7 +22,7 @@ export function ReplayButton({ onReplay }: ReplayButtonProps) {
       type="button"
       aria-label="replay"
       onClick={handleClick}
-      className="shrink-0 p-1 text-neutral-400 transition-colors duration-150 ease-out hover:text-neutral-900"
+      className="text-text-dim hover:text-text shrink-0 p-1 transition-colors duration-150 ease-out"
     >
       <svg
         key={plays}

@@ -10,7 +10,7 @@ import { siteConfig, socialLinks } from "@/app/site-config";
  */
 export function MobileFooter() {
   return (
-    <footer className="border-t border-stone-100 px-6 py-10 md:hidden">
+    <footer className="border-line border-t px-6 py-10 md:hidden">
       <nav className="flex flex-col gap-2" aria-label="elsewhere">
         {socialLinks.map((link) => (
           <a
@@ -18,24 +18,24 @@ export function MobileFooter() {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-neutral-500 no-underline"
+            className="text-text-muted text-sm no-underline"
           >
             {link.label}
           </a>
         ))}
 
-        <Link href="/terms" className="text-sm text-neutral-500 no-underline">
+        <Link href="/terms" className="text-text-muted text-sm no-underline">
           terms
         </Link>
       </nav>
 
-      <p className="mt-6 text-sm text-neutral-400">
-        made by{" "}
+      <p className="text-text-dim mt-6 text-sm">
+        Made by{" "}
         <a
           href={siteConfig.author.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-neutral-500"
+          className="text-text-muted"
         >
           {siteConfig.author.name}
         </a>

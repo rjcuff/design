@@ -22,8 +22,8 @@ function Section({
 }) {
   return (
     <section className="mt-10">
-      <h2 className="text-sm font-medium text-neutral-900">{title}</h2>
-      <div className="mt-2 space-y-3 text-sm leading-6 text-neutral-500">
+      <h2 className="text-text text-sm font-medium">{title}</h2>
+      <div className="text-text-muted mt-2 space-y-3 text-sm leading-6">
         {children}
       </div>
     </section>
@@ -34,7 +34,7 @@ function Mail() {
   return (
     <a
       href={`mailto:${CONTACT}`}
-      className="text-neutral-900 transition-colors hover:text-neutral-500"
+      className="text-text hover:text-text-muted transition-colors"
     >
       {CONTACT}
     </a>
@@ -44,17 +44,17 @@ function Mail() {
 export default function Terms() {
   return (
     <div className={styles.column}>
-      <h1 className="text-2xl font-medium tracking-tight text-neutral-900">
+      <h1 className="text-text text-2xl font-medium tracking-tight">
         terms of purchase
       </h1>
-      <p className="mt-3 text-sm leading-6 text-neutral-500">
+      <p className="text-text-muted mt-3 text-sm leading-6">
         for {pack.name}, the skills pack sold on this site. last updated 27
         august 2026.
       </p>
 
       <Section title="what you are buying">
         <p>
-          a digital download: {pack.packSize} markdown files, one per skill,
+          a digital download of {pack.packSize} markdown files, one per skill,
           plus a readme, a changelog and a license. no physical goods, no
           account, no subscription. one payment of {pack.price}.
         </p>
@@ -94,7 +94,7 @@ export default function Terms() {
 
       <Section title="refunds">
         <p>
-          <span className="text-neutral-900">3 days from purchase.</span> email{" "}
+          <span className="text-text">3 days from purchase.</span> email{" "}
           <Mail /> within that window and say you want a refund. after 3 days
           the sale is final.
         </p>
@@ -152,10 +152,10 @@ export default function Terms() {
         </p>
       </Section>
 
-      <p className="mt-12 text-sm text-neutral-400">
+      <p className="text-text-dim mt-12 text-sm">
         <Link
           href="/"
-          className="text-neutral-500 transition-colors hover:text-neutral-900"
+          className="text-text-muted hover:text-text transition-colors"
         >
           back to {siteConfig.title}
         </Link>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { MobileFooter } from "@/app/components/mobile-footer";
 import { Sidebar } from "@/app/components/sidebar";
+import { Providers } from "@/app/components/providers";
+import { Topbar } from "@/app/components/topbar";
 import { siteConfig } from "@/app/site-config";
 import "./globals.css";
 
@@ -49,14 +51,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-white font-sans text-neutral-900">
-        <Sidebar />
-        <main className="px-6 py-12 md:ml-60 md:min-h-screen md:px-10 md:py-16 lg:px-16">
-          {children}
-        </main>
-        <MobileFooter />
+      <body className="bg-canvas text-text min-h-full font-sans">
+        <Providers>
+          {/* Fixed bar, fixed sidebar under it, and the content offset past
+              both. pt-14 matches the bar height, ml-64 the sidebar width. */}
+          <Topbar />
+          <Sidebar />
+          <main className="px-6 pt-14 pb-12 md:ml-64 md:min-h-screen md:px-10 lg:px-16">
+            <div className="py-10">{children}</div>
+          </main>
+          <MobileFooter />
+        </Providers>
       </body>
     </html>
   );

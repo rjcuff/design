@@ -75,7 +75,7 @@ export function DownloadButton({ href }: { href: string }) {
 
       {/* Announced rather than only shown, since the button label changing is
           the only signal that anything happened. */}
-      <p aria-live="polite" className="mt-3 text-sm leading-6 text-neutral-500">
+      <p aria-live="polite" className="text-text-muted mt-3 text-sm leading-6">
         {phase === "idle"
           ? "the link works for 24 hours. save the files somewhere you will find them again."
           : "taking you back home. if nothing downloaded, click again."}

@@ -2,3 +2,7 @@
 node_modules
 package-lock.json
 next-env.d.ts
+
+# The skills pack. Hand aligned tables and comment columns that prettier
+# flattens, and it ships to buyers as written.
+skills/

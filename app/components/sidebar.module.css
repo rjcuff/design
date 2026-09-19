@@ -1,0 +1,67 @@
+/* ---------------------------------------------------------------------------
+   Category mark.
+
+   A sine wave that draws itself on, holds, then keeps travelling until it has
+   drawn itself off, and starts again. Because it leaves the way it arrived,
+   the loop has no seam: the first and last frames are both an empty box, so
+   there is no point where it jumps back to the start.
+
+   The path carries pathLength="1", which rescales its own length to 1 unit
+   regardless of the real geometry. That is what lets the dash values below be
+   plain numbers instead of something measured, and it means editing the wave
+   never breaks the animation.
+
+   With dasharray "1 1" there is exactly one dash the length of the path and
+   one gap the same size, so the offset alone decides how much is on screen:
+   1 is entirely gap, 0 is entirely dash, -1 is gap again on the far side.
+--------------------------------------------------------------------------- */
+.wave {
+  stroke-dasharray: 1 1;
+  animation: wave-travel 7000ms infinite;
+}
+
+/*
+ * The wave sits fully drawn for most of the cycle. That is its resting state,
+ * not an empty box, so the sidebar always reads as a wave whether or not you
+ * happen to be looking when it moves.
+ *
+ * Once every seven seconds it draws itself off and straight back on. The jump
+ * from -1 to 1 in the middle is the reset: the dash has travelled off one end
+ * and is being put back at the other. Both values render nothing, so the jump
+ * is invisible and the wave appears to leave to the left and return from the
+ * right.
+ */
+@keyframes wave-travel {
+  /* Resting, fully drawn. */
+  0%,
+  77% {
+    stroke-dashoffset: 0;
+    /* Leaving, so it eases away rather than stopping dead at the edge. */
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  /* Drawn off the end. */
+  86% {
+    stroke-dashoffset: -1;
+    animation-timing-function: step-end;
+  }
+  /* Same empty box, dash repositioned to come back from the other side. */
+  86.01% {
+    stroke-dashoffset: 1;
+    /* Arriving, so it decelerates into being fully drawn. */
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  95%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* A decorative loop is exactly the kind of movement someone asking for less
+   motion is asking to be rid of. Left in its resting state, which is the
+   fully drawn wave. */
+@media (prefers-reduced-motion: reduce) {
+  .wave {
+    animation: none;
+    stroke-dasharray: none;
+  }
+}

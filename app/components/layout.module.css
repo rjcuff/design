@@ -3,6 +3,6 @@
    share an edge. */
 .column {
   width: 100%;
-  max-width: 34rem;
+  max-width: 44rem;
   margin-inline: auto;
 }

@@ -61,8 +61,8 @@ async function resolve(sessionId: string | undefined): Promise<Outcome> {
 function Detail({ term, value }: { term: string; value: string }) {
   return (
     <div className="flex items-baseline justify-between gap-4 py-2">
-      <dt className="text-sm text-neutral-500">{term}</dt>
-      <dd className="text-sm text-neutral-900 tabular-nums">{value}</dd>
+      <dt className="text-text-muted text-sm">{term}</dt>
+      <dd className="text-text text-sm tabular-nums">{value}</dd>
     </div>
   );
 }
@@ -77,10 +77,10 @@ export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
   if (outcome.state !== "ready") {
     return (
       <div className={styles.column}>
-        <h1 className="text-2xl font-medium tracking-tight text-neutral-900">
+        <h1 className="text-text text-2xl font-medium tracking-tight">
           something went wrong
         </h1>
-        <p className="mt-3 text-sm leading-6 text-neutral-500">
+        <p className="text-text-muted mt-3 text-sm leading-6">
           {outcome.state === "stale"
             ? "this page has expired. it stays open for 24 hours after a purchase."
             : outcome.state === "unpaid"
@@ -89,7 +89,7 @@ export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
           email{" "}
           <a
             href="mailto:ryan.cuff@icloud.com"
-            className="text-neutral-900 transition-colors hover:text-neutral-500"
+            className="text-text hover:text-text-muted transition-colors"
           >
             ryan.cuff@icloud.com
           </a>{" "}
@@ -102,13 +102,13 @@ export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
   return (
     <div className={styles.column}>
       <h1
-        className={`${thanks.rise} text-2xl font-medium tracking-tight text-neutral-900`}
+        className={`${thanks.rise} text-text text-2xl font-medium tracking-tight`}
       >
         thanks
       </h1>
 
       <p
-        className={`${thanks.rise} mt-3 text-sm leading-6 text-neutral-500`}
+        className={`${thanks.rise} text-text-muted mt-3 text-sm leading-6`}
         style={{ animationDelay: "60ms" }}
       >
         payment received. the pack is yours to keep and edit, on anything you
@@ -116,12 +116,12 @@ export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
       </p>
 
       <div
-        className={`${thanks.rise} mt-10 rounded-lg border border-stone-100 bg-stone-50 p-6`}
+        className={`${thanks.rise} border-line bg-surface mt-10 rounded-lg border p-6`}
         style={{ animationDelay: "120ms" }}
       >
-        <p className="text-sm font-medium text-neutral-900">{pack.name}</p>
+        <p className="text-text text-sm font-medium">{pack.name}</p>
 
-        <dl className="mt-4 divide-y divide-stone-200/70 border-y border-stone-200/70">
+        <dl className="divide-line border-line mt-4 divide-y border-y">
           <Detail term="skills" value={String(pack.packSize)} />
           <Detail term="version" value="1.0.0" />
           <Detail term="format" value="markdown" />
@@ -133,14 +133,14 @@ export default async function Thanks({ searchParams }: PageProps<"/thanks">) {
       </div>
 
       <p
-        className={`${thanks.rise} mt-6 text-sm leading-6 text-neutral-500`}
+        className={`${thanks.rise} text-text-muted mt-6 text-sm leading-6`}
         style={{ animationDelay: "180ms" }}
       >
         updates are free for as long as the pack exists, and go to the email you
         paid with. anything wrong, email{" "}
         <a
           href="mailto:ryan.cuff@icloud.com"
-          className="text-neutral-900 transition-colors hover:text-neutral-500"
+          className="text-text hover:text-text-muted transition-colors"
         >
           ryan.cuff@icloud.com
         </a>{" "}

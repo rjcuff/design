@@ -1,8 +1,16 @@
-/* Showcase list: one card per row, stacked. */
+/* Concept grid: two cards per row once there is room for them, one below.
+   The gap is wide because each card carries a caption, and a tighter one
+   makes a caption read as if it belongs to the card underneath it. */
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 4rem;
+  gap: 3rem 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Square card frame that holds the showcase component. */
