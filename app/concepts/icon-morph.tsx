@@ -3,7 +3,7 @@
 import { Compare, H2, P, Takeaway } from "@/app/components/article";
 import { Hoverable } from "@/app/components/hoverable";
 
-const BAR = "absolute h-[1.5px] w-5 rounded-full bg-text";
+const BAR = "absolute h-0.5 w-5 rounded-full bg-text will-change-transform";
 
 /** Shared by every morph here. Both ends are on screen, so both want easing. */
 const MORPH = "transform 250ms cubic-bezier(0.65, 0, 0.35, 1)";
@@ -28,13 +28,13 @@ function Crossfade({
       {(on) => (
         <div className="relative grid size-10 place-items-center">
           <div
-            className="absolute inset-0 grid place-items-center transition-opacity duration-250"
+            className="absolute inset-0 grid place-items-center transition-opacity duration-250 will-change-[opacity]"
             style={{ opacity: on ? 0 : 1 }}
           >
             {from}
           </div>
           <div
-            className="absolute inset-0 grid place-items-center transition-opacity duration-250"
+            className="absolute inset-0 grid place-items-center transition-opacity duration-250 will-change-[opacity]"
             style={{ opacity: on ? 1 : 0 }}
           >
             {to}
@@ -115,7 +115,7 @@ function PlusMorph() {
       {(on) => (
         <div className="relative grid size-10 place-items-center">
           <div
-            className="relative grid size-5 place-items-center"
+            className="relative grid size-5 place-items-center will-change-transform"
             style={{
               transition: MORPH,
               transform: on ? "rotate(45deg)" : "rotate(0deg)",
@@ -152,7 +152,7 @@ function ChevronMorph() {
       {(on) => (
         <div className="grid size-10 place-items-center">
           <div
-            className="text-text"
+            className="text-text will-change-transform"
             style={{
               transition: MORPH,
               transform: on ? "rotate(180deg)" : "rotate(0deg)",
@@ -200,7 +200,7 @@ function SunMoonSpin() {
       {(on) => (
         <div className="relative grid size-10 place-items-center">
           <div
-            className="absolute"
+            className="absolute will-change-transform"
             style={{
               transition: `${MORPH}, opacity 250ms linear`,
               transform: on ? "rotate(90deg) scale(0.5)" : "none",
@@ -210,7 +210,7 @@ function SunMoonSpin() {
             <SunIcon />
           </div>
           <div
-            className="absolute"
+            className="absolute will-change-transform"
             style={{
               transition: `${MORPH}, opacity 250ms linear`,
               transform: on ? "none" : "rotate(-90deg) scale(0.5)",

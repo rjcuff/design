@@ -15,7 +15,7 @@ function Travel({ easing, ms }: { easing: string; ms: number }) {
         <div className="relative h-8 w-full max-w-[11rem]">
           <div className="bg-line-strong absolute top-1/2 h-px w-full -translate-y-1/2" />
           <div
-            className="bg-text absolute top-1/2 size-3 -translate-y-1/2 rounded-full"
+            className="bg-text absolute top-1/2 size-3 -translate-y-1/2 rounded-full will-change-transform"
             style={{
               transition: `transform ${ms}ms ${easing}`,
               transform: out
@@ -36,7 +36,7 @@ function Enter({ easing, ms }: { easing: string; ms: number }) {
       {(shown) => (
         <div className="grid h-16 w-full place-items-center">
           <div
-            className="border-line bg-surface-hover h-12 w-28 rounded-lg border"
+            className="border-line bg-surface-hover h-12 w-28 rounded-lg border will-change-transform"
             style={{
               transition: `transform ${ms}ms ${easing}, opacity ${ms}ms ${easing}`,
               transform: shown ? "scale(1)" : "scale(0.94)",
@@ -56,7 +56,7 @@ function Slide({ easing, ms }: { easing: string; ms: number }) {
       {(right) => (
         <div className="bg-surface-hover relative h-9 w-full max-w-[11rem] rounded-lg p-1">
           <div
-            className="bg-canvas absolute inset-y-1 w-[calc(50%-0.25rem)] rounded-md"
+            className="bg-canvas absolute inset-y-1 w-[calc(50%-0.25rem)] rounded-md will-change-transform"
             style={{
               transition: `transform ${ms}ms ${easing}`,
               transform: right ? "translateX(100%)" : "translateX(0)",
