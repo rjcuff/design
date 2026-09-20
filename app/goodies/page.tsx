@@ -58,8 +58,44 @@ function GoodIcon({ id, name }: { id: string; name: string }) {
 }
 
 export default function GoodiesPage() {
+  /*
+   * A collection of links is exactly what ItemList describes, so say so
+   * rather than leaving a search engine to infer a page of anchors. Each
+   * entry keeps its position, because the order here is editorial.
+   */
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description,
+    url: `${siteConfig.url}/goodies`,
+    inLanguage: "en",
+    author: {
+      "@type": "Person",
+      name: siteConfig.author.name,
+      url: siteConfig.author.href,
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: goodGroups.flatMap((group) =>
+        group.goods.map((good, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: good.name,
+          description: good.note,
+          url: good.href,
+        })),
+      ),
+    },
+  };
+
   return (
     <div className={styles.column}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       <h1 className="text-text text-2xl font-medium tracking-tight">{title}</h1>
 
       <p className="text-text-muted mt-3 text-sm leading-6">

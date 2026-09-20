@@ -55,6 +55,28 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="bg-canvas text-text min-h-full font-sans">
+        {/* Site level structured data. Ties every page under one author and
+            one site, which is what lets a search engine group the concepts
+            as a publication rather than as unrelated pages. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: siteConfig.title,
+              description: siteConfig.description,
+              url: siteConfig.url,
+              inLanguage: "en",
+              author: {
+                "@type": "Person",
+                name: siteConfig.author.name,
+                url: siteConfig.author.href,
+              },
+            }),
+          }}
+        />
+
         <Providers>
           {/* Fixed bar, fixed sidebar under it, and the content offset past
               both. pt-14 matches the bar height, ml-64 the sidebar width. */}

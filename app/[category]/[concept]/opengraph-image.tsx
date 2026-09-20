@@ -41,7 +41,7 @@ export default async function ConceptOgImage({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundColor: "#0a0a0a",
+        backgroundColor: "#0f0f0f",
         padding: "88px 96px",
       }}
     >
