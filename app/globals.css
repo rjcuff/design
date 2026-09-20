@@ -11,9 +11,9 @@
    invert a value without the name going wrong.
 --------------------------------------------------------------------------- */
 :root {
-  --canvas: #0a0a0a;
-  --surface: #121212;
-  --surface-hover: #171717;
+  --canvas: #0f0f0f;
+  --surface: #171717;
+  --surface-hover: #1e1e1e;
   --line: rgba(255, 255, 255, 0.07);
   --line-strong: rgba(255, 255, 255, 0.12);
 
@@ -38,10 +38,10 @@
   /* Category marks. One hue each, so a section is recognizable in the sidebar
      before the label is read. */
   --mark-craft: #f97316;
-  --mark-type: #60a5fa;
+  --mark-type: #fbbf24;
   --mark-color: #f472b6;
   --mark-layout: #fbbf24;
-  --mark-motion: #a78bfa;
+  --mark-motion: #60a5fa;
   --mark-controls: #34d399;
   --mark-api: #22d3ee;
 }
@@ -61,10 +61,10 @@
   --pass: #15803d;
 
   --mark-craft: #ea580c;
-  --mark-type: #2563eb;
+  --mark-type: #b45309;
   --mark-color: #db2777;
   --mark-layout: #d97706;
-  --mark-motion: #7c3aed;
+  --mark-motion: #2563eb;
   --mark-controls: #059669;
   --mark-api: #0891b2;
 }

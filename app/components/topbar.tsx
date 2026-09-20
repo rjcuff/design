@@ -46,13 +46,10 @@ export function Topbar() {
 
         <Link
           href="/"
-          className="flex items-center gap-2 no-underline"
+          className="text-text text-sm font-medium no-underline"
           aria-label={`${siteConfig.title}, home`}
         >
-          <span className="bg-accent size-2 rounded-full" />
-          <span className="text-text text-sm font-medium">
-            {siteConfig.title}
-          </span>
+          {siteConfig.title}
         </Link>
       </div>
 

@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
 
+import { BordersInAlphaBody } from "@/app/concepts/borders-in-alpha";
 import { EasingGuideBody } from "@/app/concepts/easing-guide";
 import { IconMorphBody } from "@/app/concepts/icon-morph";
+import { LineLengthBody } from "@/app/concepts/line-length";
 import { categories, conceptHref, findConcept } from "@/app/concepts";
 import { siteConfig } from "@/app/site-config";
 import styles from "@/app/components/layout.module.css";
@@ -19,16 +21,22 @@ import styles from "@/app/components/layout.module.css";
 const BODIES: Record<string, ComponentType> = {
   "icon-morph": IconMorphBody,
   "easing-guide": EasingGuideBody,
+  "line-length": LineLengthBody,
+  "borders-in-alpha": BordersInAlphaBody,
 };
 
 type Params = { category: string; concept: string };
 
 export function generateStaticParams(): Params[] {
   return categories.flatMap((category) =>
-    category.concepts.map((concept) => ({
-      category: category.id,
-      concept: concept.id,
-    })),
+    category.concepts
+      // Unwritten concepts have no page. They are listed in the sidebar as
+      // plain text rather than links, so nothing points here.
+      .filter((concept) => !concept.soon)
+      .map((concept) => ({
+        category: category.id,
+        concept: concept.id,
+      })),
   );
 }
 
@@ -39,7 +47,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { category, concept } = await params;
   const found = findConcept(category, concept);
-  if (!found) return {};
+  if (!found || found.concept.soon) return {};
 
   const url = `/${category}/${concept}`;
 
@@ -68,9 +76,10 @@ export default async function ConceptPage({
 }) {
   const { category, concept } = await params;
   const found = findConcept(category, concept);
-  if (!found) notFound();
+  if (!found || found.concept.soon) notFound();
 
   const Body = BODIES[found.concept.id];
+  if (!Body) notFound();
 
   // Article schema, so a concept can show as its own result rather than being
   // rolled into the site. The author block is what ties them together.
@@ -127,13 +136,7 @@ export default async function ConceptPage({
         {found.concept.title}
       </h1>
 
-      {Body ? (
-        <Body />
-      ) : (
-        <p className="text-text-muted mt-4 text-sm leading-6">
-          {found.concept.description} not written yet.
-        </p>
-      )}
+      <Body />
     </div>
   );
 }

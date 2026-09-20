@@ -9,10 +9,14 @@ export const alt = `A design engineering concept on ${siteConfig.title}`;
 
 export function generateStaticParams() {
   return categories.flatMap((category) =>
-    category.concepts.map((concept) => ({
-      category: category.id,
-      concept: concept.id,
-    })),
+    category.concepts
+      // Unwritten concepts have no page. They are listed in the sidebar as
+      // plain text rather than links, so nothing points here.
+      .filter((concept) => !concept.soon)
+      .map((concept) => ({
+        category: category.id,
+        concept: concept.id,
+      })),
   );
 }
 

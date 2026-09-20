@@ -1,37 +1,37 @@
 /* ---------------------------------------------------------------------------
-   Category mark.
+   Category marks.
 
-   A sine wave that draws itself on, holds, then keeps travelling until it has
-   drawn itself off, and starts again. Because it leaves the way it arrived,
-   the loop has no seam: the first and last frames are both an empty box, so
-   there is no point where it jumps back to the start.
+   Two behaviours. The stroked glyphs draw themselves off and back on, and the
+   color swatch cycles through the category hues.
 
-   The path carries pathLength="1", which rescales its own length to 1 unit
-   regardless of the real geometry. That is what lets the dash values below be
-   plain numbers instead of something measured, and it means editing the wave
-   never breaks the animation.
+   The drawn ones carry pathLength="1", which rescales a path's own length to
+   one unit regardless of its real geometry. That is what lets the dash values
+   below be plain numbers rather than something measured, and it means editing
+   a glyph never breaks its animation.
 
    With dasharray "1 1" there is exactly one dash the length of the path and
    one gap the same size, so the offset alone decides how much is on screen:
    1 is entirely gap, 0 is entirely dash, -1 is gap again on the far side.
 --------------------------------------------------------------------------- */
-.wave {
+.draw {
   stroke-dasharray: 1 1;
-  animation: wave-travel 7000ms infinite;
+  animation: draw-travel 7000ms infinite;
+  /* Set per glyph, so the column does not redraw itself in unison. Three
+     marks moving at once reads as the whole sidebar flickering. */
+  animation-delay: var(--draw-delay, 0ms);
 }
 
 /*
- * The wave sits fully drawn for most of the cycle. That is its resting state,
- * not an empty box, so the sidebar always reads as a wave whether or not you
- * happen to be looking when it moves.
+ * A glyph sits fully drawn for most of the cycle. That is its resting state,
+ * not an empty box, so the sidebar always reads as the mark whether or not
+ * you happen to be looking when it moves.
  *
  * Once every seven seconds it draws itself off and straight back on. The jump
  * from -1 to 1 in the middle is the reset: the dash has travelled off one end
  * and is being put back at the other. Both values render nothing, so the jump
- * is invisible and the wave appears to leave to the left and return from the
- * right.
+ * is invisible and the glyph appears to leave one way and return the other.
  */
-@keyframes wave-travel {
+@keyframes draw-travel {
   /* Resting, fully drawn. */
   0%,
   77% {
@@ -56,12 +56,44 @@
   }
 }
 
+/*
+ * The color swatch. Rather than a curve, this one just is its subject: it
+ * moves through the same hues the other categories are marked in, so the
+ * palette is on screen instead of being described.
+ *
+ * Every stop is a token, so it holds up in both themes rather than being four
+ * hex values tuned for the dark one.
+ */
+.hue {
+  animation: hue-shift 12000ms linear infinite;
+}
+
+@keyframes hue-shift {
+  0%,
+  100% {
+    color: var(--mark-color);
+  }
+  25% {
+    color: var(--mark-type);
+  }
+  50% {
+    color: var(--mark-controls);
+  }
+  75% {
+    color: var(--mark-motion);
+  }
+}
+
 /* A decorative loop is exactly the kind of movement someone asking for less
-   motion is asking to be rid of. Left in its resting state, which is the
-   fully drawn wave. */
+   motion is asking to be rid of. Each is left in its resting state, which is
+   the drawn glyph and the category's own color. */
 @media (prefers-reduced-motion: reduce) {
-  .wave {
+  .draw {
     animation: none;
     stroke-dasharray: none;
+  }
+
+  .hue {
+    animation: none;
   }
 }

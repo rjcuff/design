@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "build:pack": "node scripts/build-pack.mjs",
-    "mint-link": "node scripts/mint-link.mjs"
+    "mint-link": "node scripts/mint-link.mjs",
+    "goodies:icons": "node scripts/fetch-goodies-icons.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

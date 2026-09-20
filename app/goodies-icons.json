@@ -1,0 +1,23 @@
+{
+  "animations-dev": "/goodies/animations-dev.png",
+  "devouring-details": "/goodies/devouring-details.png",
+  "whimsy": "/goodies/whimsy.png",
+  "joshwcomeau": "/goodies/joshwcomeau.png",
+  "refactoring-ui": "/goodies/refactoring-ui.png",
+  "web-dev": "/goodies/web-dev.png",
+  "motion": "/goodies/motion.png",
+  "easings": "/goodies/easings.png",
+  "spring-visualizer": "/goodies/spring-visualizer.png",
+  "lucide": "/goodies/lucide.ico",
+  "phosphor": "/goodies/phosphor.png",
+  "radix-icons": "/goodies/radix-icons.png",
+  "tabler": "/goodies/tabler.ico",
+  "mdn": "/goodies/mdn.png",
+  "caniuse": "/goodies/caniuse.png",
+  "webaim": "/goodies/webaim.ico",
+  "type-scale": "/goodies/type-scale.png",
+  "mobbin": "/goodies/mobbin.png",
+  "recent": "/goodies/recent.svg",
+  "linear": "/goodies/linear.png",
+  "easeui": "/goodies/easeui.svg"
+}

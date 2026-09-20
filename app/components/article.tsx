@@ -57,6 +57,19 @@ function RightIcon() {
  * read without the surrounding copy. The word wrong or right is the verdict,
  * the caption is the evidence.
  */
+function Verdict({ wrong }: { wrong: boolean }) {
+  return (
+    <div
+      className={`flex items-center gap-2 text-sm font-medium ${
+        wrong ? "text-fail" : "text-pass"
+      }`}
+    >
+      {wrong ? <WrongIcon /> : <RightIcon />}
+      {wrong ? "Wrong" : "Right"}
+    </div>
+  );
+}
+
 function Side({
   verdict,
   caption,
@@ -66,18 +79,9 @@ function Side({
   caption: string;
   children: ReactNode;
 }) {
-  const isWrong = verdict === "wrong";
-
   return (
     <div className="flex flex-col items-center gap-4">
-      <div
-        className={`flex items-center gap-2 text-sm font-medium ${
-          isWrong ? "text-fail" : "text-pass"
-        }`}
-      >
-        {isWrong ? <WrongIcon /> : <RightIcon />}
-        {isWrong ? "Wrong" : "Right"}
-      </div>
+      <Verdict wrong={verdict === "wrong"} />
 
       <div className="border-line bg-surface flex w-full items-center justify-center rounded-xl border p-6">
         {children}
@@ -98,9 +102,12 @@ function Side({
 export function Compare({
   wrong,
   right,
+  hint = "Point at either one to play it",
 }: {
   wrong: { caption: string; children: ReactNode };
   right: { caption: string; children: ReactNode };
+  /** Set to null for a pair that is not interactive. */
+  hint?: string | null;
 }) {
   return (
     <div className="mt-8">
@@ -113,9 +120,42 @@ export function Compare({
         </Side>
       </div>
 
-      <p className="text-text-dim mt-6 text-center text-xs">
-        Point at either one to play it
-      </p>
+      {hint ? (
+        <p className="text-text-dim mt-6 text-center text-xs">{hint}</p>
+      ) : null}
+    </div>
+  );
+}
+
+/**
+ * The same pair, stacked and full width.
+ *
+ * For anything whose problem is its width. Half a column each would make the
+ * wrong one look fine, which is the opposite of the point.
+ */
+export function CompareStacked({
+  wrong,
+  right,
+}: {
+  wrong: { caption: string; children: ReactNode };
+  right: { caption: string; children: ReactNode };
+}) {
+  return (
+    <div className="mt-8 flex flex-col gap-8">
+      {[
+        { verdict: "wrong" as const, ...wrong },
+        { verdict: "right" as const, ...right },
+      ].map((side) => (
+        <div key={side.verdict} className="flex flex-col gap-3">
+          <Verdict wrong={side.verdict === "wrong"} />
+
+          <div className="border-line bg-surface rounded-xl border p-5">
+            {side.children}
+          </div>
+
+          <p className="text-text-dim text-xs">{side.caption}</p>
+        </div>
+      ))}
     </div>
   );
 }
