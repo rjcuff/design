@@ -61,7 +61,7 @@ export function ConceptNav({ onNavigate }: { onNavigate?: () => void }) {
             : "text-text-muted hover:text-text flex min-h-11 items-center text-sm no-underline transition-colors md:min-h-0"
         }
       >
-        Index
+        Intro
       </Link>
 
       {categories.map((category) => (

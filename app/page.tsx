@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.column}>
       <section id="introduction" className="scroll-mt-20">
-        <h1 className="text-text text-2xl font-medium tracking-tight">Index</h1>
+        <h1 className="text-text text-2xl font-medium tracking-tight">Intro</h1>
 
         <p className="text-text-muted mt-3 text-sm leading-6">
           A set of design engineering concepts, one idea at a time. Each one
