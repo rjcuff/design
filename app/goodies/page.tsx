@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 import icons from "@/app/goodies-icons.json";
-import { goodGroups } from "@/app/goodies";
+import { type Good, goodGroups } from "@/app/goodies";
 import { siteConfig } from "@/app/site-config";
 import styles from "@/app/components/layout.module.css";
 
@@ -29,7 +29,35 @@ const iconFor = icons as Record<string, string | undefined>;
  * A fallback rather than a broken image, because one site in twenty serves
  * nothing usable and that should not leave a hole in the row.
  */
-function GoodIcon({ id, name }: { id: string; name: string }) {
+function EaseMark() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className="size-4 shrink-0"
+    >
+      <polygon
+        points="8.27,3 15.73,3 21,8.27 21,15.73 15.73,21 8.27,21 3,15.73 3,8.27"
+        stroke="currentColor"
+        strokeWidth={3.5}
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function GoodIcon({
+  id,
+  name,
+  inlineIcon,
+}: {
+  id: string;
+  name: string;
+  inlineIcon?: Good["inlineIcon"];
+}) {
+  if (inlineIcon === "easeui") return <EaseMark />;
+
   const src = iconFor[id];
 
   if (!src) {
@@ -121,7 +149,11 @@ export default function GoodiesPage() {
                   className="group flex min-h-11 flex-wrap items-center gap-x-2.5 gap-y-0.5 text-sm no-underline sm:min-h-0"
                 >
                   <span className="flex items-center gap-2.5">
-                    <GoodIcon id={good.id} name={good.name} />
+                    <GoodIcon
+                      id={good.id}
+                      name={good.name}
+                      inlineIcon={good.inlineIcon}
+                    />
                     <span className="text-text group-hover:text-text-muted transition-colors">
                       {good.name}
                     </span>
@@ -134,7 +166,9 @@ export default function GoodiesPage() {
                     ·
                   </span>
 
-                  <span className="text-text-muted leading-6">{good.note}</span>
+                  <span className="text-text-muted hidden leading-6 sm:inline">
+                    {good.note}
+                  </span>
                 </a>
               </li>
             ))}

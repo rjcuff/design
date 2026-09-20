@@ -38,6 +38,9 @@ const ACCEPTED = new Set([
  */
 const RENDER_PX = 32;
 
+/** Entries whose mark the page draws itself. See `inlineIcon` in goodies.ts. */
+const INLINE = new Set(["easeui"]);
+
 const PNG_MAGIC = Buffer.from([0x89, 0x50, 0x4e, 0x47]);
 
 /**
@@ -188,6 +191,13 @@ async function main() {
   const manifest = {};
 
   for (const { id, href } of entries) {
+    // Drawn in the page so it can take the theme's color. Fetching the real
+    // favicon would put a fixed black or white octagon back.
+    if (INLINE.has(id)) {
+      console.log(`skip  ${id}  drawn in the page`);
+      continue;
+    }
+
     const icon = await fetchIcon(href);
 
     if (!icon) {

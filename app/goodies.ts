@@ -16,6 +16,15 @@ export type Good = {
   /** One short line, in my own words. Kept to a single row on the page. */
   note: string;
   href: string;
+  /**
+   * Draw the mark in the page rather than fetching a favicon for it.
+   *
+   * For marks that are a shape in one flat color. As an <img> a favicon
+   * cannot inherit the page's color, and an svg carrying its own
+   * prefers-color-scheme rule follows the operating system rather than this
+   * site's theme, so it disappears whenever the two disagree.
+   */
+  inlineIcon?: "easeui";
 };
 
 export type GoodGroup = {
@@ -184,6 +193,7 @@ export const goodGroups: GoodGroup[] = [
         name: "Ease UI",
         note: "My component library, where this ends up.",
         href: "https://easeui.dev",
+        inlineIcon: "easeui",
       },
     ],
   },
