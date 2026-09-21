@@ -11,7 +11,7 @@ import { Drawer } from "./drawer";
  *
  * The sidebar is hidden below md, so this is the only way to the concepts
  * there. It opens the same list in a sheet, and closing it on navigate
- * matters because most of the links are in-page anchors: without that the
+ * matters because most of the links are in-page anchors, and without that the
  * sheet would stay up covering the thing it just scrolled to.
  */
 export function MobileMenu() {

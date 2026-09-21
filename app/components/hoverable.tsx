@@ -31,8 +31,8 @@ export function Hoverable({
   /**
    * Touch fires pointerenter on tap and then click straight after, so
    * tracking both would turn the demo on and immediately back off, and a tap
-   * would appear to do nothing. Pointer tracking is for a real pointer; touch
-   * is left to the click handler below.
+   * would appear to do nothing. Pointer tracking is for a real pointer, and
+   * touch is left to the click handler below.
    */
   function onPointer(event: PointerEvent<HTMLButtonElement>, next: boolean) {
     if (event.pointerType !== "mouse") return;

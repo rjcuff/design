@@ -43,7 +43,7 @@ html[data-theme-reveal]::view-transition-new(root) {
 }
 `;
 
-/** Nothing to subscribe to: the value differs on server and client only. */
+/** Nothing to subscribe to. The value differs on server and client only. */
 function subscribeNever() {
   return () => {};
 }

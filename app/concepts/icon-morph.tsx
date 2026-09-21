@@ -66,7 +66,7 @@ function CloseIcon() {
 
 /**
  * Three bars the whole time. The outer two travel to the center and rotate
- * into the cross; the middle one fades, because three into two means one has
+ * into the cross. The middle one fades, because three into two means one has
  * to go.
  */
 function MenuMorph() {
@@ -145,7 +145,13 @@ function Chevron({ up }: { up?: boolean }) {
   );
 }
 
-/** The same chevron, turned over. Redrawing it as a second icon is wasted. */
+/**
+ * The same chevron, turned over. Redrawing it as a second icon is wasted.
+ *
+ * Worth saying that this works because it is one control changing state. Two
+ * different actions that differ only by a rotation, an upload and a download
+ * sitting side by side, need a second signal to tell them apart.
+ */
 function ChevronMorph() {
   return (
     <Hoverable label="Play the chevron morph">

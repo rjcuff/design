@@ -32,7 +32,7 @@ const icons: Record<string, () => React.ReactElement> = {
 };
 
 /**
- * Pinned across the top: the wordmark on the left, links on the right.
+ * Pinned across the top, the wordmark on the left and links on the right.
  *
  * Fixed rather than scrolling with the page, so the way home and the theme
  * control are reachable from any depth. It sits above the sidebar in the

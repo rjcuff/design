@@ -5,8 +5,12 @@ import type { ComponentType } from "react";
 
 import { BordersInAlphaBody } from "@/app/concepts/borders-in-alpha";
 import { EasingGuideBody } from "@/app/concepts/easing-guide";
+import { HitTargetsBody } from "@/app/concepts/hit-targets";
 import { IconMorphBody } from "@/app/concepts/icon-morph";
 import { LineLengthBody } from "@/app/concepts/line-length";
+import { NameThePropertiesBody } from "@/app/concepts/name-the-properties";
+import { OpticalAlignmentBody } from "@/app/concepts/optical-alignment";
+import { TransformBody } from "@/app/concepts/transform";
 import { categories, conceptHref, findConcept } from "@/app/concepts";
 import { siteConfig } from "@/app/site-config";
 import styles from "@/app/components/layout.module.css";
@@ -21,8 +25,12 @@ import styles from "@/app/components/layout.module.css";
 const BODIES: Record<string, ComponentType> = {
   "icon-morph": IconMorphBody,
   "easing-guide": EasingGuideBody,
+  transform: TransformBody,
+  "name-the-properties": NameThePropertiesBody,
   "line-length": LineLengthBody,
   "borders-in-alpha": BordersInAlphaBody,
+  "optical-alignment": OpticalAlignmentBody,
+  "hit-targets": HitTargetsBody,
 };
 
 type Params = { category: string; concept: string };

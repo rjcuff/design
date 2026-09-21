@@ -45,7 +45,7 @@ export async function GET(request: Request) {
   try {
     file = await readFile(ARCHIVE_PATH);
   } catch (error) {
-    // A paying customer with a valid token and no file. Loud: this is a
+    // A paying customer with a valid token and no file. Loud, because this is a
     // deployment problem, usually the archive missing from the bundle.
     console.error("[download] ARCHIVE MISSING", error);
     return new Response("The file is temporarily unavailable.", {
@@ -60,7 +60,7 @@ export async function GET(request: Request) {
       "Content-Type": "application/zip",
       "Content-Length": String(file.byteLength),
       "Content-Disposition": `attachment; filename="${ARCHIVE_FILENAME}"`,
-      // Belt and braces with `force-dynamic`: keep it out of every cache
+      // Belt and braces with `force-dynamic`, keeping it out of every cache
       // between here and the browser.
       "Cache-Control": "private, no-store",
     },

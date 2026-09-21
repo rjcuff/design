@@ -28,7 +28,7 @@
   /* Verdict colors for the wrong and right pair on a concept page. Named
      fail and pass because text-right is already a Tailwind alignment
      utility, and a color of that name would collide with it. Both clear
-     4.5:1 on the dark surface. */
+     4.5 to 1 on the dark surface. */
   --fail: #f87171;
   --pass: #4ade80;
 
@@ -40,7 +40,7 @@
   --mark-craft: #f97316;
   --mark-type: #fbbf24;
   --mark-color: #f472b6;
-  --mark-layout: #fbbf24;
+  --mark-layout: #a78bfa;
   --mark-motion: #60a5fa;
   --mark-controls: #34d399;
   --mark-api: #22d3ee;
@@ -63,7 +63,7 @@
   --mark-craft: #ea580c;
   --mark-type: #b45309;
   --mark-color: #db2777;
-  --mark-layout: #d97706;
+  --mark-layout: #7c3aed;
   --mark-motion: #2563eb;
   --mark-controls: #059669;
   --mark-api: #0891b2;
@@ -93,8 +93,8 @@
 }
 
 html {
-  /* Tells the browser to paint its own chrome (form controls, scrollbars) to
-     match, so a dark page does not come with a white scrollbar. */
+  /* Tells the browser to paint its own chrome, form controls and scrollbars
+     included, so a dark page does not come with a white scrollbar. */
   color-scheme: dark;
 }
 

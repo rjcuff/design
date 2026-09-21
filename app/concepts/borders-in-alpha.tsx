@@ -76,6 +76,14 @@ export function BordersInAlphaBody() {
         inputs and one for the sidebar is three values that will drift.
       </P>
 
+      <P>
+        The one place to watch is a dark theme with a bright surface under the
+        line. White at twelve percent over a light card in a dark app reads as a
+        glow rather than an edge, and that is the case where a quiet solid does
+        look better. Check the line on the brightest surface it will ever sit
+        on, not only on the canvas.
+      </P>
+
       <H2>When a shadow is better</H2>
 
       <P>

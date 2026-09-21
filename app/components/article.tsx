@@ -80,10 +80,16 @@ function Side({
   children: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex h-full flex-col items-center gap-4">
       <Verdict wrong={verdict === "wrong"} />
 
-      <div className="border-line bg-surface flex w-full items-center justify-center rounded-xl border p-6">
+      {/*
+       * Grows to the tallest frame in the row. The two demos rarely measure
+       * the same, and a pair of frames at different heights puts the captions
+       * on different lines, which reads as a layout bug rather than as the
+       * difference being demonstrated.
+       */}
+      <div className="border-line bg-surface flex w-full flex-1 items-center justify-center rounded-xl border p-6">
         {children}
       </div>
 

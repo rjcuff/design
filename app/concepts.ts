@@ -4,7 +4,7 @@ import type { ComponentType } from "react";
  * Every concept on the site, grouped the way the sidebar shows them.
  *
  * An entry is either written or it is not. A written one carries a demo and
- * the long description; a soon one carries a single line saying what it will
+ * the long description. A soon one carries a single line saying what it will
  * cover, and renders dimmed everywhere it appears. Nothing is hidden, so the
  * shape of the whole thing is visible from the first visit.
  *
@@ -17,8 +17,8 @@ export type Concept = {
   id: string;
   title: string;
   /**
-   * Written entries: what building it taught me, about three short sentences.
-   * Soon entries: one line on what it will cover.
+   * Written entries say what building it taught me, about three short
+   * sentences. Soon entries are one line on what it will cover.
    */
   description: string;
   /**
@@ -35,8 +35,8 @@ export type Concept = {
   soon?: boolean;
 };
 
-/** Which glyph the sidebar draws for a category. Only the wave animates. */
-export type CategoryGlyph = "wave" | "type" | "swatch";
+/** Which glyph the sidebar draws for a category. One per category, no reuse. */
+export type CategoryGlyph = "wave" | "type" | "swatch" | "frame" | "switch";
 
 export type Category = {
   id: string;
@@ -76,6 +76,18 @@ export const categories: Category[] = [
         title: "Easing Guide",
         description:
           "Which curve to reach for, how long to run it, and why ease-in is almost never the answer.",
+      },
+      {
+        id: "transform",
+        title: "Transform",
+        description:
+          "The one property the compositor can move on its own, and what animating a height costs instead.",
+      },
+      {
+        id: "name-the-properties",
+        title: "Name The Properties",
+        description:
+          "Transition all subscribes to every property an element will ever have, including the one added later.",
       },
     ],
   },
@@ -138,6 +150,62 @@ export const categories: Category[] = [
         title: "Disabled Is A Token",
         description:
           "Dimming with opacity passes contrast on one background and fails on the next. A token does not move.",
+        soon: true,
+      },
+    ],
+  },
+  {
+    id: "layout",
+    title: "Layout",
+    mark: "var(--mark-layout)",
+    glyph: "frame",
+    concepts: [
+      {
+        id: "optical-alignment",
+        title: "Optical Alignment",
+        description:
+          "Centered by the numbers and centered by eye are different positions, and the eye is the one that ships.",
+      },
+      {
+        id: "one-spacing-scale",
+        title: "One Spacing Scale",
+        description:
+          "Gaps picked per component drift within a week. A scale makes the wrong value look wrong.",
+        soon: true,
+      },
+      {
+        id: "reserve-the-space",
+        title: "Reserve The Space",
+        description:
+          "Anything that arrives late needs its room held for it, or the page rearranges itself under the reader.",
+        soon: true,
+      },
+    ],
+  },
+  {
+    id: "controls",
+    title: "Controls",
+    mark: "var(--mark-controls)",
+    glyph: "switch",
+    concepts: [
+      {
+        id: "states-are-a-set",
+        title: "States Are A Set",
+        description:
+          "Hover, focus, active, disabled and loading are one set. Designing three of them leaves the other two to chance.",
+        soon: true,
+      },
+      {
+        id: "hit-targets",
+        title: "Hit Targets",
+        description:
+          "The target is not the icon. It is the area around it, and on a phone that area has a floor.",
+      },
+      {
+        id: "focus-is-not-hover",
+        title: "Focus Is Not Hover",
+        description:
+          "A keyboard needs to see where it is. Reusing the hover treatment for focus says nothing to the person using it.",
         soon: true,
       },
     ],

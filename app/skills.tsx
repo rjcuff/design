@@ -1,7 +1,7 @@
 /**
  * The skills pack, as it is sold on the page.
  *
- * A .tsx file rather than .ts because the descriptions hold markup: the
+ * A .tsx file rather than .ts because the descriptions hold markup. The
  * phrase worth reading in each one is marked, so the section can be skimmed
  * in three passes without the copy being cut down to bullets.
  */

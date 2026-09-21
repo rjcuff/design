@@ -2,7 +2,7 @@
 
    Press only, no hover, matching the buy button and the showcase. The one
    thing that does move is the fill, and it moves because it is reporting
-   something: the file is on its way. */
+   something. The file is on its way. */
 .button {
   position: relative;
   isolation: isolate;

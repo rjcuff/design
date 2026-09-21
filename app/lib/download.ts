@@ -8,11 +8,11 @@ import { requireEnv } from "./env";
  *
  * The product file lives outside `public/`, so it has no url of its own. The
  * only way to it is a token this module signs, and the signature is what makes
- * the token unforgeable: the payload is readable, but changing so much as the
+ * the token unforgeable. The payload is readable, but changing so much as the
  * expiry invalidates it.
  *
  * Deliberately stateless. There is no database, so a link cannot be revoked or
- * counted, only outlived. The short window is the whole defense: a link posted
+ * counted, only outlived. The short window is the whole defense, since a link posted
  * somewhere public stops working within a day.
  */
 

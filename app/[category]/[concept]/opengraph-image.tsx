@@ -21,9 +21,9 @@ export function generateStaticParams() {
 }
 
 /**
- * Share card for a concept. The title carries the card, with the description
- * under it, so a link posted anywhere says which concept it is rather than
- * only which site.
+ * Share card for a concept. The title, centered, and nothing else. The
+ * description is already in the link preview underneath the image, so putting
+ * it on the image too just prints it twice at a size nobody can read.
  */
 export default async function ConceptOgImage({
   params,
@@ -39,48 +39,23 @@ export default async function ConceptOgImage({
         width: "100%",
         height: "100%",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        backgroundColor: "#0f0f0f",
-        padding: "88px 96px",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#000000",
+        padding: "0 120px",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-        <div
-          style={{
-            display: "flex",
-            width: 28,
-            height: 28,
-            borderRadius: "50%",
-            backgroundColor: "#f97316",
-          }}
-        />
-        <div style={{ display: "flex", fontSize: 30, color: "#8a8a8a" }}>
-          {siteConfig.title}
-        </div>
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 76,
-            letterSpacing: "-0.03em",
-            color: "#ededed",
-          }}
-        >
-          {found?.concept.title ?? siteConfig.title}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 34,
-            lineHeight: 1.4,
-            color: "#8a8a8a",
-          }}
-        >
-          {found?.concept.description ?? siteConfig.description}
-        </div>
+      <div
+        style={{
+          display: "flex",
+          fontSize: 100,
+          lineHeight: 1.15,
+          letterSpacing: "-0.04em",
+          textAlign: "center",
+          color: "#ededed",
+        }}
+      >
+        {found?.concept.title ?? siteConfig.title}
       </div>
     </div>,
     size,

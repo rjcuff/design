@@ -8,10 +8,10 @@ export const contentType = "image/png";
 /**
  * The site's share card.
  *
- * Same treatment as the concept and Goodies cards: wordmark up top, the line
- * that matters below it, on the site's own canvas. This was a white card with
- * an orange dot, left over from before the site went dark, so a link to the
- * home page looked like it came from somewhere else entirely.
+ * Black, with the name in the middle, and nothing else. A share card is read
+ * at thumbnail size in a feed, where a strapline is too small to read and a
+ * wordmark in the corner is too small to notice. One word at this size
+ * survives the shrink.
  */
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -20,26 +20,20 @@ export default function OpengraphImage() {
         width: "100%",
         height: "100%",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        backgroundColor: "#0f0f0f",
-        padding: "88px 96px",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#000000",
       }}
     >
-      <div style={{ display: "flex", fontSize: 30, color: "#8a8a8a" }}>
-        {siteConfig.title}
-      </div>
-
       <div
         style={{
           display: "flex",
-          fontSize: 60,
-          lineHeight: 1.25,
-          letterSpacing: "-0.03em",
+          fontSize: 132,
+          letterSpacing: "-0.04em",
           color: "#ededed",
         }}
       >
-        {siteConfig.description}
+        {siteConfig.title}
       </div>
     </div>,
     size,

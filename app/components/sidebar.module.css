@@ -10,7 +10,7 @@
    a glyph never breaks its animation.
 
    With dasharray "1 1" there is exactly one dash the length of the path and
-   one gap the same size, so the offset alone decides how much is on screen:
+   one gap the same size, so the offset alone decides how much is on screen.
    1 is entirely gap, 0 is entirely dash, -1 is gap again on the far side.
 --------------------------------------------------------------------------- */
 .draw {
@@ -27,7 +27,7 @@
  * you happen to be looking when it moves.
  *
  * Once every seven seconds it draws itself off and straight back on. The jump
- * from -1 to 1 in the middle is the reset: the dash has travelled off one end
+ * from -1 to 1 in the middle is the reset. The dash has travelled off one end
  * and is being put back at the other. Both values render nothing, so the jump
  * is invisible and the glyph appears to leave one way and return the other.
  */
@@ -57,9 +57,9 @@
 }
 
 /*
- * The color swatch. Rather than a curve, this one just is its subject: it
- * moves through the same hues the other categories are marked in, so the
- * palette is on screen instead of being described.
+ * The color mark draws itself like the rest, and then does one more thing on
+ * top. It moves through the same hues the other categories are marked in, so
+ * the palette is on screen instead of being described.
  *
  * Every stop is a token, so it holds up in both themes rather than being four
  * hex values tuned for the dark one.

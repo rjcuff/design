@@ -12,7 +12,7 @@ import {
 } from "react";
 import { cn } from "@/lib/utils";
 
-/** Matches --ease-drawer in globals.css. The iOS sheet curve: steep start, gentle settle. */
+/** Matches --ease-drawer in globals.css. The iOS sheet curve, steep start and gentle settle. */
 const EASE_DRAWER = "cubic-bezier(0.32, 0.72, 0, 1)";
 const ENTER_MS = 300;
 /** Matches the exit transition below. Closing is quicker than opening. */
@@ -187,7 +187,7 @@ export function Drawer({
           className,
         )}
       >
-        {/* Handle plus header are draggable; the close button is excluded. */}
+        {/* Handle plus header are draggable. The close button is excluded. */}
         <div
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}

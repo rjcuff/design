@@ -1,4 +1,4 @@
-/* Concept grid: two cards per row once there is room for them, one below.
+/* Concept grid. Two cards per row once there is room for them, one below.
    The gap is wide because each card carries a caption, and a tighter one
    makes a caption read as if it belongs to the card underneath it. */
 .grid {

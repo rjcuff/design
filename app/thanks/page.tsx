@@ -18,7 +18,7 @@ import thanks from "./thanks.module.css";
  *
  * The one hole is a buyer sharing this url, which would let anyone mint fresh
  * links indefinitely. Refusing sessions older than the link lifetime closes
- * it: after a day the page stops working for everybody, buyer included.
+ * it. After a day the page stops working for everybody, buyer included.
  */
 
 export const dynamic = "force-dynamic";

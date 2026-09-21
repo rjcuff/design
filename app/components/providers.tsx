@@ -9,7 +9,7 @@ import { ThemeProvider } from "next-themes";
  * off, and next-themes injects its own blocking script, so there is no flash
  * and nothing here to hand-roll.
  *
- * System preference is off on purpose: dark is the site's default look, and
+ * System preference is off on purpose. Dark is the site's default look, and
  * the toggle is an explicit choice rather than a correction to the OS.
  */
 export function Providers({ children }: { children: React.ReactNode }) {

@@ -8,12 +8,12 @@ import styles from "./sidebar.module.css";
 
 /**
  * Category marks. One glyph each, all drawn on the same 16px grid at the same
- * stroke weight, so they read as one family rather than three icons that
+ * stroke weight, so they read as one family rather than a pile of icons that
  * happened to end up in the same column.
  *
- * Each animates in the terms of its own category: the stroked ones redraw
- * themselves, and the color one changes color. They are staggered so the
- * column never moves all at once.
+ * Each animates in the terms of its own category. They all redraw themselves,
+ * and the color one shifts hue as well. They are staggered so the column never
+ * moves all at once.
  */
 function CategoryMark({
   glyph,
@@ -60,16 +60,111 @@ function CategoryMark({
   }
 
   if (glyph === "swatch") {
-    // A filled disc rather than an outline, because the whole point of this
-    // one is the color and a 1.75px stroke is not much color to look at.
+    /*
+     * Two overlapping circles, the way color gets taught. The interesting
+     * part is not either circle, it is what happens where they cross. Drawn
+     * rather than filled so it sits in the same family as the A and the wave,
+     * and the swatch keeps its hue cycle so the mark is still made of color.
+     */
     return (
       <svg
         viewBox="0 0 16 16"
+        fill="none"
         aria-hidden="true"
         className={`size-4 shrink-0 ${styles.hue}`}
         style={{ color }}
       >
-        <circle cx="8" cy="8" r="5" fill="currentColor" />
+        <path
+          d="M1.5 8a4 4 0 1 1 8 0a4 4 0 1 1 -8 0"
+          pathLength={1}
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          className={styles.draw}
+          style={{ "--draw-delay": "1100ms" } as React.CSSProperties}
+        />
+        <path
+          d="M6.5 8a4 4 0 1 1 8 0a4 4 0 1 1 -8 0"
+          pathLength={1}
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          className={styles.draw}
+          style={{ "--draw-delay": "1350ms" } as React.CSSProperties}
+        />
+      </svg>
+    );
+  }
+
+  if (glyph === "frame") {
+    /*
+     * A frame split into two columns. The outer box draws first and the
+     * divider lands after it, so the mark reads as a page being laid out
+     * rather than as a table appearing all at once.
+     */
+    return (
+      <svg
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+        className="size-4 shrink-0"
+        style={{ color }}
+      >
+        <path
+          d="M2.6 3.4h10.8v9.2H2.6z"
+          pathLength={1}
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={styles.draw}
+          style={{ "--draw-delay": "3300ms" } as React.CSSProperties}
+        />
+        <path
+          d="M9.2 3.4v9.2"
+          pathLength={1}
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          className={styles.draw}
+          style={{ "--draw-delay": "3550ms" } as React.CSSProperties}
+        />
+      </svg>
+    );
+  }
+
+  if (glyph === "switch") {
+    /*
+     * A switch, track and knob. The knob is drawn rather than filled so it
+     * keeps the same weight as everything else in the column.
+     */
+    return (
+      <svg
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+        className="size-4 shrink-0"
+        style={{ color }}
+      >
+        <path
+          d="M5.2 4.4h5.6a3.6 3.6 0 0 1 0 7.2H5.2a3.6 3.6 0 0 1 0-7.2z"
+          pathLength={1}
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={styles.draw}
+          style={{ "--draw-delay": "4400ms" } as React.CSSProperties}
+        />
+        <path
+          d="M9.3 8a1.5 1.5 0 1 1 3 0a1.5 1.5 0 1 1 -3 0"
+          pathLength={1}
+          stroke="currentColor"
+          strokeWidth={1.75}
+          strokeLinecap="round"
+          className={styles.draw}
+          style={{ "--draw-delay": "4650ms" } as React.CSSProperties}
+        />
       </svg>
     );
   }
@@ -155,7 +250,7 @@ export function ConceptNav({ onNavigate }: { onNavigate?: () => void }) {
                * "not written" wastes the trip.
                *
                * A span rather than a disabled link, because there is no such
-               * thing: an anchor without an href is already out of the tab
+               * thing. An anchor without an href is already out of the tab
                * order and unclickable, and aria-disabled would announce a
                * control that is not there.
                */
